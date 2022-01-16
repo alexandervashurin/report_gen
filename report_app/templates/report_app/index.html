@@ -1,0 +1,45 @@
+{% extends "report_app/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/jpeg" href="{% static '/images/pic2.png' %}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/responsive_panel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/response.css' %}">
+</head>
+<div class="header">
+    <h2 align="center">Информационная система</h2>
+    </div>
+<div class="topnav">
+  <a href="/admin/maker_reports/" class="floating-button2">Панель администрирования</a>
+  <a href="{{ss}}" class="floating-button2" >Загрузить из облака</a>
+    <a href="#" class="floating-button2">Отчёты</a>
+      <a href="#" class="floating-button2">Сводный отчёт </a>
+</div>
+<div class="row">
+  <div class="col-6 col-s-6 menu">
+    <ul>
+        <li><a href="/report_period" class="floating-button">Построить графики с помощью plotly</a></li>
+        <li><a href="/pivot_table" class="floating-button"> Сводная таблица отказов </a></li>
+        <li><a href="/upload_f" class="floating-button"> Ежедневное состояние отчётов на {{title}}</a></li>
+
+
+    </ul>
+  </div>
+<div class="row">
+  <div class="col-6 col-s-6 menu">
+    <ul>
+        <li><a href="/clients_result" class="floating-button">Отчёты по основным системам </a></li>
+        <li><a href="/equipment_result" class="floating-button">Сводный отчёт по движению оборудования</a></li>
+        <li><a href="/neplan_clean_result" class="floating-button">Сводный отчёт по отработанным неплановым ремонтам</a></li>
+        <li><a href="/add" class="floating-button">Добавить проблему</a></li>
+        <li><a href="/users_add" class="floating-button">Пользователи</a></li>
+    </ul>
+  </div>
+
+
+{% endblock content %}

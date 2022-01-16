@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/jpeg" href="{% static 'images/download.jpeg' %}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Генератор отчётов</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<table class="tftable" border="1">
+{% block content %}
+{% endblock content %}
+    </table>
+
+
+    <a href="/index" class="floating-button2"  >
+    <img src="{% static 'images/knopka.png' %}">
+</a>
+</p>
+</body>

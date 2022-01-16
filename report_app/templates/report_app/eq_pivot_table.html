@@ -1,0 +1,397 @@
+{% extends "maker_reports/base.html" %}
+{% block content %}
+
+{% csrf_token %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if objects_list.has_previous %}
+            <a href="?page=1">&laquo; на первую</a>
+            <a href="?page={{ objects_list.previous_page_number }}"> пред. </a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ objects_list.number }} из {{ objects_list.paginator.num_pages }}.
+        </span>
+
+        {% if objects_list.has_next %}
+            <a href="?page={{ objects_list.next_page_number }}"> след. </a>
+            <a href="?page={{ objects_list.paginator.num_pages }}"> к последней &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+<div class="tftable">
+<h2>{{заголовок}}</h2>
+    <tr>
+        <th>Наименование  оборудования</th>
+        <th>количество установленого</th>
+        <th>количество снятого</th>
+
+
+{% for p in  обор %}
+
+
+    <tr><style>
+    g {
+  text-align: center;
+  text-transform: uppercase;
+  color: #cc0066;
+}
+</style>
+
+
+    <td>
+        {% if p == '1' %}{{equip.1}}{% else %}{% endif %}
+        {% if p == '2' %}{{equip.2}}{% else %}{% endif %}
+        {% if p == '3' %}{{equip.3}}{% else %}{% endif %}
+        {% if p == '4' %}{{equip.4}}{% else %}{% endif %}
+        {% if p == '5' %}{{equip.5}}{% else %}{% endif %}
+        {% if p == '6' %}{{equip.6}}{% else %}{% endif %}
+        {% if p == '7' %}{{equip.7}}{% else %}{% endif %}
+        {% if p == '8' %}{{equip.8}}{% else %}{% endif %}
+        {% if p == '9' %}{{equip.9}}{% else %}{% endif %}
+        {% if p == '10' %}{{equip.10}}{% else %}{% endif %}
+        {% if p == '11' %}{{equip.11}}{% else %}{% endif %}
+        {% if p == '12' %}{{equip.12}}{% else %}{% endif %}
+        {% if p == '13' %}{{equip.13}}{% else %}{% endif %}
+        {% if p == '14' %}{{equip.14}}{% else %}{% endif %}
+        {% if p  == '15' %}{{equip.15}}{% else %}{% endif %}
+        {% if p  == '16' %}{{equip.16}}{% else %}{% endif %}
+        {% if p  == '17' %}{{equip.17}}{% else %}{% endif %}
+        {% if p  == '18' %}{{equip.18}}{% else %}{% endif %}
+        {% if p  == '19' %}{{equip.19}}{% else %}{% endif %}
+        {% if p  == '20' %}{{equip.20}}{% else %}{% endif %}
+        {% if p  == '21' %}{{equip.21}}{% else %}{% endif %}
+        {% if p  == '22' %}{{equip.22}}{% else %}{% endif %}
+        {% if p  == '23' %}{{equip.23}}{% else %}{% endif %}
+        {% if p  == '24' %}{{equip.24}}{% else %}{% endif %}
+        {% if p  == '25' %}{{equip.25}}{% else %}{% endif %}
+        {% if p  == '26' %}{{equip.26}}{% else %}{% endif %}
+        {% if p  == '27' %}{{equip.27}}{% else %}{% endif %}
+        {% if p  == '28' %}{{equip.28}}{% else %}{% endif %}
+        {% if p  == '29' %}{{equip.29}}{% else %}{% endif %}
+        {% if p  == '30' %}{{equip.30}}{% else %}{% endif %}
+        {% if p  == '31' %}{{equip.31}}{% else %}{% endif %}
+        {% if p  == '32' %}{{equip.32}}{% else %}{% endif %}
+        {% if p  == '33' %}{{equip.33}}{% else %}{% endif %}
+        {% if p  == '34' %}{{equip.34}}{% else %}{% endif %}
+        {% if p  == '35' %}{{equip.35}}{% else %}{% endif %}
+        {% if p  == '36' %}{{equip.36}}{% else %}{% endif %}
+        {% if p  == '37' %}{{equip.37}}{% else %}{% endif %}
+        {% if p  == '38' %}{{equip.38}}{% else %}{% endif %}
+        {% if p  == '39' %}{{equip.39}}{% else %}{% endif %}
+        {% if p  == '40' %}{{equip.40}}{% else %}{% endif %}
+        {% if p  == '41' %}{{equip.41}}{% else %}{% endif %}
+        {% if p  == '42' %}{{equip.42}}{% else %}{% endif %}
+        {% if p  == '43' %}{{equip.43}}{% else %}{% endif %}
+        {% if p  == '44' %}{{equip.44}}{% else %}{% endif %}
+        {% if p  == '45' %}{{equip.45}}{% else %}{% endif %}
+        {% if p  == '46' %}{{equip.46}}{% else %}{% endif %}
+        {% if p  == '47' %}{{equip.47}}{% else %}{% endif %}
+        {% if p  == '48' %}{{equip.48}}{% else %}{% endif %}
+        {% if p  == '49' %}{{equip.49}}{% else %}{% endif %}
+        {% if p  == '50' %}{{equip.50}}{% else %}{% endif %}
+        {% if p  == '51' %}{{equip.51}}{% else %}{% endif %}
+        {% if p  == '52' %}{{equip.52}}{% else %}{% endif %}
+        {% if p  == '53' %}{{equip.53}}{% else %}{% endif %}
+        {% if p  == '54' %}{{equip.54}}{% else %}{% endif %}
+        {% if p  == '55' %}{{equip.55}}{% else %}{% endif %}
+        {% if p  == '56' %}{{equip.56}}{% else %}{% endif %}
+        {% if p  == '57' %}{{equip.57}}{% else %}{% endif %}
+        {% if p  == '58' %}{{equip.58}}{% else %}{% endif %}
+        {% if p  == '59' %}{{equip.59}}{% else %}{% endif %}
+        {% if p  == '60' %}{{equip.60}}{% else %}{% endif %}
+        {% if p  == '61' %}{{equip.61}}{% else %}{% endif %}
+        {% if p  == '62' %}{{equip.62}}{% else %}{% endif %}
+        {% if p  == '63' %}{{equip.63}}{% else %}{% endif %}
+        {% if p  == '64' %}{{equip.64}}{% else %}{% endif %}
+        {% if p  == '65' %}{{equip.65}}{% else %}{% endif %}
+        {% if p  == '66' %}{{equip.66}}{% else %}{% endif %}
+        {% if p  == '67' %}{{equip.67}}{% else %}{% endif %}
+        {% if p  == '68' %}{{equip.68}}{% else %}{% endif %}
+        {% if p  == '69' %}{{equip.69}}{% else %}{% endif %}
+        {% if p  == '70' %}{{equip.70}}{% else %}{% endif %}
+        {% if p  == '71' %}{{equip.71}}{% else %}{% endif %}
+        {% if p  == '72' %}{{equip.72}}{% else %}{% endif %}
+        {% if p  == '73' %}{{equip.73}}{% else %}{% endif %}
+        {% if p  == '74' %}{{equip.74}}{% else %}{% endif %}
+        {% if p  == '75' %}{{equip.75}}{% else %}{% endif %}
+        {% if p  == '76' %}{{equip.76}}{% else %}{% endif %}
+        {% if p  == '77' %}{{equip.77}}{% else %}{% endif %}
+        {% if p  == '78' %}{{equip.78}}{% else %}{% endif %}
+        {% if p  == '79' %}{{equip.79}}{% else %}{% endif %}
+     {% if p  == '80' %}{{equip.80}}{% else %}{% endif %}
+     {% if p  == '81' %}{{equip.81}}{% else %}{% endif %}
+     {% if p  == '82' %}{{equip.82}}{% else %}{% endif %}
+     {% if p  == '83' %}{{equip.83}}{% else %}{% endif %}
+     {% if p  == '84' %}{{equip.84}}{% else %}{% endif %}
+     {% if p  == '85' %}{{equip.85}}{% else %}{% endif %}
+     {% if p  == '86' %}{{equip.86}}{% else %}{% endif %}
+     {% if p  == '87' %}{{equip.87}}{% else %}{% endif %}
+     {% if p  == '88' %}{{equip.88}}{% else %}{% endif %}
+     {% if p  == '89' %}{{equip.89}}{% else %}{% endif %}
+     {% if p  == '90' %}{{equip.90}}{% else %}{% endif %}
+     {% if p  == '91' %}{{equip.91}}{% else %}{% endif %}
+     {% if p  == '92' %}{{equip.92}}{% else %}{% endif %}
+     {% if p  == '93' %}{{equip.93}}{% else %}{% endif %}
+     {% if p  == '94' %}{{equip.94}}{% else %}{% endif %}
+     {% if p  == '95' %}{{equip.95}}{% else %}{% endif %}
+     {% if p  == '96' %}{{equip.96}}{% else %}{% endif %}
+     {% if p  == '97' %}{{equip.97}}{% else %}{% endif %}
+     {% if p  == '98' %}{{equip.98}}{% else %}{% endif %}
+     {% if p  == '99' %}{{equip.99}}{% else %}{% endif %}
+     {% if p  == '100' %}{{equip.100}}{% else %}{% endif %}
+     {% if p  == '101' %}{{equip.101}}{% else %}{% endif %}
+     {% if p  == '102' %}{{equip.102}}{% else %}{% endif %}
+     {% if p  == '103' %}{{equip.103}}{% else %}{% endif %}
+     {% if p  == '104' %}{{equip.104}}{% else %}{% endif %}
+     {% if p  == '105' %}{{equip.105}}{% else %}{% endif %}
+     {% if p  == '106' %}{{equip.106}}{% else %}{% endif %}
+     {% if p  == '107' %}{{equip.107}}{% else %}{% endif %}
+     {% if p  == '108' %}{{equip.108}}{% else %}{% endif %}
+     {% if p  == '109' %}{{equip.109}}{% else %}{% endif %}
+     {% if p  == '110' %}{{equip.110}}{% else %}{% endif %}
+     {% if p  == '111' %}{{equip.111}}{% else %}{% endif %}
+    </td>
+
+
+   <td>
+        {% if p == '1' %}{{ обор.1}}{% else %}{% endif %}
+        {% if p == '2' %}{{ обор.2}}{% else %}{% endif %}
+        {% if p == '3' %}{{ обор.3}}{% else %}{% endif %}
+        {% if p == '4' %}{{ обор.4}}{% else %}{% endif %}
+        {% if p == '5' %}{{ обор.5}}{% else %}{% endif %}
+        {% if p == '6' %}{{ обор.6}}{% else %}{% endif %}
+        {% if p == '7' %}{{ обор.7}}{% else %}{% endif %}
+        {% if p == '8' %}{{ обор.8}}{% else %}{% endif %}
+        {% if p == '9' %}{{ обор.9}}{% else %}{% endif %}
+        {% if p == '10' %}{{ обор.10}}{% else %}{% endif %}
+        {% if p == '11' %}{{ обор.11}}{% else %}{% endif %}
+        {% if p == '12' %}{{ обор.12}}{% else %}{% endif %}
+        {% if p == '13' %}{{ обор.13}}{% else %}{% endif %}
+        {% if p == '14' %}{{ обор.14}}{% else %}{% endif %}
+        {% if p  == '15' %}{{ обор.15}}{% else %}{% endif %}
+        {% if p  == '16' %}{{ обор.16}}{% else %}{% endif %}
+        {% if p  == '17' %}{{ обор.17}}{% else %}{% endif %}
+        {% if p  == '18' %}{{ обор.18}}{% else %}{% endif %}
+        {% if p  == '19' %}{{ обор.19}}{% else %}{% endif %}
+        {% if p  == '20' %}{{ обор.20}}{% else %}{% endif %}
+        {% if p  == '21' %}{{ обор.21}}{% else %}{% endif %}
+        {% if p  == '22' %}{{ обор.22}}{% else %}{% endif %}
+        {% if p  == '23' %}{{ обор.23}}{% else %}{% endif %}
+        {% if p  == '24' %}{{ обор.24}}{% else %}{% endif %}
+        {% if p  == '25' %}{{ обор.25}}{% else %}{% endif %}
+        {% if p  == '26' %}{{ обор.26}}{% else %}{% endif %}
+        {% if p  == '27' %}{{ обор.27}}{% else %}{% endif %}
+        {% if p  == '28' %}{{ обор.28}}{% else %}{% endif %}
+        {% if p  == '29' %}{{ обор.29}}{% else %}{% endif %}
+        {% if p  == '30' %}{{ обор.30}}{% else %}{% endif %}
+        {% if p  == '31' %}{{ обор.31}}{% else %}{% endif %}
+        {% if p  == '32' %}{{ обор.32}}{% else %}{% endif %}
+        {% if p  == '33' %}{{ обор.33}}{% else %}{% endif %}
+        {% if p  == '34' %}{{ обор.34}}{% else %}{% endif %}
+        {% if p  == '35' %}{{ обор.35}}{% else %}{% endif %}
+        {% if p  == '36' %}{{ обор.36}}{% else %}{% endif %}
+        {% if p  == '37' %}{{ обор.37}}{% else %}{% endif %}
+        {% if p  == '38' %}{{ обор.38}}{% else %}{% endif %}
+        {% if p  == '39' %}{{ обор.39}}{% else %}{% endif %}
+        {% if p  == '40' %}{{ обор.40}}{% else %}{% endif %}
+        {% if p  == '41' %}{{ обор.41}}{% else %}{% endif %}
+        {% if p  == '42' %}{{ обор.42}}{% else %}{% endif %}
+        {% if p  == '43' %}{{ обор.43}}{% else %}{% endif %}
+        {% if p  == '44' %}{{ обор.44}}{% else %}{% endif %}
+        {% if p  == '45' %}{{ обор.45}}{% else %}{% endif %}
+        {% if p  == '46' %}{{ обор.46}}{% else %}{% endif %}
+        {% if p  == '47' %}{{ обор.47}}{% else %}{% endif %}
+        {% if p  == '48' %}{{ обор.48}}{% else %}{% endif %}
+        {% if p  == '49' %}{{ обор.49}}{% else %}{% endif %}
+        {% if p  == '50' %}{{ обор.50}}{% else %}{% endif %}
+        {% if p  == '51' %}{{ обор.51}}{% else %}{% endif %}
+        {% if p  == '52' %}{{ обор.52}}{% else %}{% endif %}
+        {% if p  == '53' %}{{ обор.53}}{% else %}{% endif %}
+        {% if p  == '54' %}{{ обор.54}}{% else %}{% endif %}
+        {% if p  == '55' %}{{ обор.55}}{% else %}{% endif %}
+        {% if p  == '56' %}{{ обор.56}}{% else %}{% endif %}
+        {% if p  == '57' %}{{ обор.57}}{% else %}{% endif %}
+        {% if p  == '58' %}{{ обор.58}}{% else %}{% endif %}
+        {% if p  == '59' %}{{ обор.59}}{% else %}{% endif %}
+        {% if p  == '60' %}{{ обор.60}}{% else %}{% endif %}
+        {% if p  == '61' %}{{ обор.61}}{% else %}{% endif %}
+        {% if p  == '62' %}{{ обор.62}}{% else %}{% endif %}
+        {% if p  == '63' %}{{ обор.63}}{% else %}{% endif %}
+        {% if p  == '64' %}{{ обор.64}}{% else %}{% endif %}
+        {% if p  == '65' %}{{ обор.65}}{% else %}{% endif %}
+        {% if p  == '66' %}{{ обор.66}}{% else %}{% endif %}
+        {% if p  == '67' %}{{ обор.67}}{% else %}{% endif %}
+        {% if p  == '68' %}{{ обор.68}}{% else %}{% endif %}
+        {% if p  == '69' %}{{ обор.69}}{% else %}{% endif %}
+        {% if p  == '70' %}{{ обор.70}}{% else %}{% endif %}
+        {% if p  == '71' %}{{ обор.71}}{% else %}{% endif %}
+        {% if p  == '72' %}{{ обор.72}}{% else %}{% endif %}
+        {% if p  == '73' %}{{ обор.73}}{% else %}{% endif %}
+        {% if p  == '74' %}{{ обор.74}}{% else %}{% endif %}
+        {% if p  == '75' %}{{ обор.75}}{% else %}{% endif %}
+        {% if p  == '76' %}{{ обор.76}}{% else %}{% endif %}
+        {% if p  == '77' %}{{ обор.77}}{% else %}{% endif %}
+        {% if p  == '78' %}{{ обор.78}}{% else %}{% endif %}
+        {% if p  == '79' %}{{ обор.79}}{% else %}{% endif %}
+     {% if p  == '80' %}{{ обор.80}}{% else %}{% endif %}
+     {% if p  == '81' %}{{ обор.81}}{% else %}{% endif %}
+     {% if p  == '82' %}{{ обор.82}}{% else %}{% endif %}
+     {% if p  == '83' %}{{ обор.83}}{% else %}{% endif %}
+     {% if p  == '84' %}{{ обор.84}}{% else %}{% endif %}
+     {% if p  == '85' %}{{ обор.85}}{% else %}{% endif %}
+     {% if p  == '86' %}{{ обор.86}}{% else %}{% endif %}
+     {% if p  == '87' %}{{ обор.87}}{% else %}{% endif %}
+     {% if p  == '88' %}{{ обор.88}}{% else %}{% endif %}
+     {% if p  == '89' %}{{ обор.89}}{% else %}{% endif %}
+     {% if p  == '90' %}{{ обор.90}}{% else %}{% endif %}
+     {% if p  == '91' %}{{ обор.91}}{% else %}{% endif %}
+     {% if p  == '92' %}{{ обор.92}}{% else %}{% endif %}
+     {% if p  == '93' %}{{ обор.93}}{% else %}{% endif %}
+     {% if p  == '94' %}{{ обор.94}}{% else %}{% endif %}
+     {% if p  == '95' %}{{ обор.95}}{% else %}{% endif %}
+     {% if p  == '96' %}{{ обор.96}}{% else %}{% endif %}
+     {% if p  == '97' %}{{ обор.97}}{% else %}{% endif %}
+     {% if p  == '98' %}{{ обор.98}}{% else %}{% endif %}
+     {% if p  == '99' %}{{ обор.99}}{% else %}{% endif %}
+     {% if p  == '100' %}{{ обор.100}}{% else %}{% endif %}
+     {% if p  == '101' %}{{ обор.101}}{% else %}{% endif %}
+       {% if p  == '102' %}{{ обор.102}}{% else %}{% endif %}
+     {% if p  == '103' %}{{ обор.103}}{% else %}{% endif %}
+     {% if p  == '104' %}{{ обор.104}}{% else %}{% endif %}
+     {% if p  == '105' %}{{ обор.105}}{% else %}{% endif %}
+     {% if p  == '106' %}{{ обор.106}}{% else %}{% endif %}
+     {% if p  == '107' %}{{ обор.107}}{% else %}{% endif %}
+     {% if p  == '108' %}{{ обор.108}}{% else %}{% endif %}
+     {% if p  == '109' %}{{ обор.109}}{% else %}{% endif %}
+     {% if p  == '110' %}{{ обор.110}}{% else %}{% endif %}
+     {% if p  == '111' %}{{ обор.111}}{% else %}{% endif %}
+   </td>
+
+
+
+
+    <td>{% if p == '1' %}{{ обор2.1}}{% else %}{% endif %}
+        {% if p == '2' %}{{ обор2.2}}{% else %}{% endif %}
+        {% if p == '3' %}{{ обор2.3}}{% else %}{% endif %}
+        {% if p == '4' %}{{ обор2.4}}{% else %}{% endif %}
+        {% if p == '5' %}{{ обор2.5}}{% else %}{% endif %}
+        {% if p == '6' %}{{ обор2.6}}{% else %}{% endif %}
+        {% if p == '7' %}{{ обор2.7}}{% else %}{% endif %}
+        {% if p == '8' %}{{ обор2.8}}{% else %}{% endif %}
+        {% if p == '9' %}{{ обор2.9}}{% else %}{% endif %}
+        {% if p == '10' %}{{ обор2.10}}{% else %}{% endif %}
+        {% if p == '11' %}{{ обор2.11}}{% else %}{% endif %}
+        {% if p == '12' %}{{ обор2.12}}{% else %}{% endif %}
+         {% if p == '13' %}{{ обор2.13}}{% else %}{% endif %}
+        {% if p == '14' %}{{ обор2.14}}{% else %}{% endif %}
+        {% if p  == '15' %}{{ обор2.15}}{% else %}{% endif %}
+        {% if p  == '16' %}{{ обор2.16}}{% else %}{% endif %}
+        {% if p  == '17' %}{{ обор2.17}}{% else %}{% endif %}
+        {% if p  == '18' %}{{ обор2.18}}{% else %}{% endif %}
+        {% if p  == '19' %}{{ обор2.19}}{% else %}{% endif %}
+        {% if p  == '20' %}{{ обор2.20}}{% else %}{% endif %}
+        {% if p  == '21' %}{{ обор2.21}}{% else %}{% endif %}
+        {% if p  == '22' %}{{ обор2.22}}{% else %}{% endif %}
+        {% if p  == '23' %}{{ обор2.23}}{% else %}{% endif %}
+        {% if p  == '24' %}{{ обор2.24}}{% else %}{% endif %}
+        {% if p  == '25' %}{{ обор2.25}}{% else %}{% endif %}
+        {% if p  == '26' %}{{ обор2.26}}{% else %}{% endif %}
+        {% if p  == '27' %}{{ обор2.27}}{% else %}{% endif %}
+        {% if p  == '28' %}{{ обор2.28}}{% else %}{% endif %}
+        {% if p  == '29' %}{{ обор2.29}}{% else %}{% endif %}
+        {% if p  == '30' %}{{ обор2.30}}{% else %}{% endif %}
+        {% if p  == '31' %}{{ обор2.31}}{% else %}{% endif %}
+        {% if p  == '32' %}{{ обор2.32}}{% else %}{% endif %}
+        {% if p  == '33' %}{{ обор2.33}}{% else %}{% endif %}
+        {% if p  == '34' %}{{ обор2.34}}{% else %}{% endif %}
+        {% if p  == '35' %}{{ обор2.35}}{% else %}{% endif %}
+        {% if p  == '36' %}{{ обор2.36}}{% else %}{% endif %}
+        {% if p  == '37' %}{{ обор2.37}}{% else %}{% endif %}
+        {% if p  == '38' %}{{ обор2.38}}{% else %}{% endif %}
+        {% if p  == '39' %}{{ обор2.39}}{% else %}{% endif %}
+        {% if p  == '40' %}{{ обор2.40}}{% else %}{% endif %}
+        {% if p  == '41' %}{{ обор2.41}}{% else %}{% endif %}
+        {% if p  == '42' %}{{ обор2.42}}{% else %}{% endif %}
+        {% if p  == '43' %}{{ обор2.43}}{% else %}{% endif %}
+        {% if p  == '44' %}{{ обор2.44}}{% else %}{% endif %}
+        {% if p  == '45' %}{{ обор2.45}}{% else %}{% endif %}
+        {% if p  == '46' %}{{ обор2.46}}{% else %}{% endif %}
+        {% if p  == '47' %}{{ обор2.47}}{% else %}{% endif %}
+        {% if p  == '48' %}{{ обор2.48}}{% else %}{% endif %}
+        {% if p  == '49' %}{{ обор2.49}}{% else %}{% endif %}
+        {% if p  == '50' %}{{ обор2.50}}{% else %}{% endif %}
+        {% if p  == '51' %}{{ обор2.51}}{% else %}{% endif %}
+        {% if p  == '52' %}{{ обор2.52}}{% else %}{% endif %}
+        {% if p  == '53' %}{{ обор2.53}}{% else %}{% endif %}
+        {% if p  == '54' %}{{ обор2.54}}{% else %}{% endif %}
+        {% if p  == '55' %}{{ обор2.55}}{% else %}{% endif %}
+        {% if p  == '56' %}{{ обор2.56}}{% else %}{% endif %}
+        {% if p  == '57' %}{{ обор2.57}}{% else %}{% endif %}
+        {% if p  == '58' %}{{ обор2.58}}{% else %}{% endif %}
+        {% if p  == '59' %}{{ обор2.59}}{% else %}{% endif %}
+        {% if p  == '60' %}{{ обор2.60}}{% else %}{% endif %}
+        {% if p  == '61' %}{{ обор2.61}}{% else %}{% endif %}
+        {% if p  == '62' %}{{ обор2.62}}{% else %}{% endif %}
+        {% if p  == '63' %}{{ обор2.63}}{% else %}{% endif %}
+        {% if p  == '64' %}{{ обор2.64}}{% else %}{% endif %}
+        {% if p  == '65' %}{{ обор2.65}}{% else %}{% endif %}
+        {% if p  == '66' %}{{ обор2.66}}{% else %}{% endif %}
+        {% if p  == '67' %}{{ обор2.67}}{% else %}{% endif %}
+        {% if p  == '68' %}{{ обор2.68}}{% else %}{% endif %}
+        {% if p  == '69' %}{{ обор2.69}}{% else %}{% endif %}
+        {% if p  == '70' %}{{ обор2.70}}{% else %}{% endif %}
+        {% if p  == '71' %}{{ обор2.71}}{% else %}{% endif %}
+        {% if p  == '72' %}{{ обор2.72}}{% else %}{% endif %}
+        {% if p  == '73' %}{{ обор2.73}}{% else %}{% endif %}
+        {% if p  == '74' %}{{ обор2.74}}{% else %}{% endif %}
+        {% if p  == '75' %}{{ обор2.75}}{% else %}{% endif %}
+        {% if p  == '76' %}{{ обор2.76}}{% else %}{% endif %}
+        {% if p  == '77' %}{{ обор2.77}}{% else %}{% endif %}
+        {% if p  == '78' %}{{ обор2.78}}{% else %}{% endif %}
+        {% if p  == '79' %}{{ обор2.79}}{% else %}{% endif %}
+     {% if p  == '80' %}{{ обор2.80}}{% else %}{% endif %}
+     {% if p  == '81' %}{{ обор2.81}}{% else %}{% endif %}
+     {% if p  == '82' %}{{ обор2.82}}{% else %}{% endif %}
+     {% if p  == '83' %}{{ обор2.83}}{% else %}{% endif %}
+     {% if p  == '84' %}{{ обор2.84}}{% else %}{% endif %}
+     {% if p  == '85' %}{{ обор2.85}}{% else %}{% endif %}
+     {% if p  == '86' %}{{ обор2.86}}{% else %}{% endif %}
+     {% if p  == '87' %}{{ обор2.87}}{% else %}{% endif %}
+     {% if p  == '88' %}{{ обор2.88}}{% else %}{% endif %}
+     {% if p  == '89' %}{{ обор2.89}}{% else %}{% endif %}
+     {% if p  == '90' %}{{ обор2.90}}{% else %}{% endif %}
+     {% if p  == '91' %}{{ обор2.91}}{% else %}{% endif %}
+     {% if p  == '92' %}{{ обор2.92}}{% else %}{% endif %}
+     {% if p  == '93' %}{{ обор2.93}}{% else %}{% endif %}
+     {% if p  == '94' %}{{ обор2.94}}{% else %}{% endif %}
+     {% if p  == '95' %}{{ обор2.95}}{% else %}{% endif %}
+     {% if p  == '96' %}{{ обор2.96}}{% else %}{% endif %}
+     {% if p  == '97' %}{{ обор2.97}}{% else %}{% endif %}
+     {% if p  == '98' %}{{ обор2.98}}{% else %}{% endif %}
+     {% if p  == '99' %}{{ обор2.99}}{% else %}{% endif %}
+     {% if p  == '100' %}{{ обор2.100}}{% else %}{% endif %}
+     {% if p  == '101' %}{{ обор2.101}}{% else %}{% endif %}
+     {% if p  == '102' %}{{ обор2.102}}{% else %}{% endif %}
+     {% if p  == '103' %}{{ обор2.103}}{% else %}{% endif %}
+     {% if p  == '104' %}{{ обор2.104}}{% else %}{% endif %}
+     {% if p  == '105' %}{{ обор2.105}}{% else %}{% endif %}
+     {% if p  == '106' %}{{ обор2.106}}{% else %}{% endif %}
+     {% if p  == '107' %}{{ обор2.107}}{% else %}{% endif %}
+     {% if p  == '108' %}{{ обор2.108}}{% else %}{% endif %}
+     {% if p  == '109' %}{{ обор2.109}}{% else %}{% endif %}
+     {% if p  == '110' %}{{ обор2.110}}{% else %}{% endif %}
+     {% if p  == '111' %}{{ обор2.111}}{% else %}{% endif %}
+    </td>
+
+
+    </tr>
+
+  {% endfor %}
+</div>
+<p>
+<form action="upload_d/" method="post">{% csrf_token %}
+    <input type="submit" value="выгрузить отчёт"></form>
+</p>
+{% endblock content  %}

@@ -1,0 +1,76 @@
+{% extends "maker_reports/base.html" %}
+{% block content %}
+
+{% csrf_token %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if objects_list.has_previous %}
+            <a href="?page=1">&laquo; на первую</a>
+            <a href="?page={{ objects_list.previous_page_number }}"> пред. </a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ objects_list.number }} из {{ objects_list.paginator.num_pages }}.
+        </span>
+
+        {% if objects_list.has_next %}
+            <a href="?page={{ objects_list.next_page_number }}"> след. </a>
+            <a href="?page={{ objects_list.paginator.num_pages }}"> к последней &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+<div class="tftable">
+<h2>Сводный реестр отказов </h2>
+    <tr>
+        <th>№ заявки</th>
+        <th>Серия</th>
+        <th>Номер поезда</th>
+        <th>Депо приписки</th>
+        <th>Дата отказа</th>
+        <th>Статус события</th>
+        <th>Характер неисправности (утв.)</th>
+        <th>Причина неисправ.</th>
+        <th>Принятые меры</th>
+        <th>Приложения</th>
+        <th>№ заказ-наряда</th>
+        <th>Пробег поезда, км</th>
+        <th>Вид ремонта</th>
+        <th>Дата и время начала ремонта</th>
+        <th>Дата и время окончания ремонта</th>
+                <th>Пробег компонента</th>
+
+    {% for p in objects_list %}
+
+    <tr><style>
+    g {
+  text-align: center;
+  text-transform: uppercase;
+  color: #cc0066;
+}
+</style>
+
+
+    <td>{% if p.НОМЕР_ЗАЯВКИ %}{{p.НОМЕР_ЗАЯВКИ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.СЕРИЯ %}{{p.СЕРИЯ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.НОМЕР_ПОЕЗДА %}{{p.НОМЕР_ПОЕЗДА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ДЕПО_ПРИПИСКИ %}{{p.ДЕПО_ПРИПИСК}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ДАТА_ОТКАЗА %}{{p.ДАТА_ОТКАЗА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.СТАТУС_СОБЫТИЯ %}{{p.СТАТУС_СОБЫТИЯ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ХАРАКТЕР_НЕИСПРАВНОСТИ_УТВ %}{{p.ХАРАКТЕР_НЕИСПРАВНОСТИ_УТВ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ПРИЧИНА_НЕИСПРАВНОСТИ %}{{p.ПРИЧИНА_НЕИСПРАВНОСТИ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ПРИНЯТЫЕ_МЕРЫ %}{{p.ПРИНЯТЫЕ_МЕРЫ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ПРИЛОЖЕНИЯ %}{{p.ПРИЛОЖЕНИЯ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.НОМЕР_ЗАКАЗ_НАРЯДА %}{{p.НОМЕР_ЗАКАЗ_НАРЯДА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ПРОБЕГ_ПОЕЗДА_КМ %}{{p.ПРОБЕГ_ПОЕЗДА_КМ}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ВИД_РЕМОНТА %}{{p.ВИД_РЕМОНТА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ДАТА_И_ВРЕМЯ_НАЧАЛА_РЕМОНТА %}{{p.ДАТА_И_ВРЕМЯ_НАЧАЛА_РЕМОНТА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ДАТА_И_ВРЕМЯ_ОКОНЧАНИЯ_РЕМОНТА %}{{p.ДАТА_И_ВРЕМЯ_ОКОНЧАНИЯ_РЕМОНТА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+    <td>{% if p.ПРОБЕГ_КОМПОНЕНТА %}{{p.ПРОБЕГ_КОМПОНЕНТА}}{% else %}<g><a href="/admin/maker_reports/">ОПЕРАТОР! ЗАПОЛНИТЬ</a></g>{% endif %}</td>
+
+
+    </tr>
+    {% endfor %}
+</div>
+
+{% endblock content %}

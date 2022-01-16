@@ -1,0 +1,75 @@
+{% extends "maker_reports/base.html" %}
+{% block content %}
+
+<div class="tft">
+ <h2>{{title}}</h2>
+
+    <tr>
+         <th>станция приписки</th>
+         <th>{{superhero.1.1}}</th>
+         <th>{{superhero.1.2}}</th>
+         <th>{{superhero.1.3}}</th>
+         <th>{{superhero.1.4}}</th>
+         <th>{{superhero.1.5}}</th>
+        <th>{{superhero.1.6}}</th>
+
+
+    {% for ii in superhero2 %}
+
+        <tr><style>
+    g {
+    font-size:16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #cc0066;
+}
+
+ff {
+font-size:12px;
+   font-family: Helvetica, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  color:#666633;
+}
+
+
+</style>
+
+    <td><ff>
+        {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+    </ff>
+        <g>{{ii.0}}</g>{% else %}{{ii.0}}{% endif %}</td>
+    {% autoescape off %}
+    <td>
+        {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{{ii.1}}</g>{% else %}{% if ii.1 is not None %}{{ii.1}}{% endif %}{{ striptags }}{% endif %}</td>
+    {% endautoescape %}
+    <td>
+    {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{{ii.2}}</g>{% else %}{% if ii.2 is not None%}{{ii.2}}{% endif %}{% endif %}</td>
+    <td>
+   {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{{ii.3}}</g>{% else %}{% if ii.3 is not None%}{{ii.3}}{% endif %}{% endif %}</td>
+    <td>
+     {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{{ii.4}}</g>{% else %}{% if ii.4 is not None %}{{ii.4}}{% endif %}{% endif %}</td>
+    <td>
+        {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{% if ii.5 is not None%}{{ii.5}}{% endif %}</g>{% else %}{% if ii.5 is not None%}{{ii.5}}{% endif %}{% endif %}</td>
+    <td>
+        {% if r1 in ii.4 or r11 in ii.4 or r2 in ii.4 or r3 in ii.4 or r4 in ii.4 or r5 in ii.4 or r6 in ii.4 or r7 in ii.4 or r9 in ii.4 or r0 in ii.4 or r01 in ii.4 or r02 in ii.4 or r03 in ii.4 or r04 in ii.4 or r05 in ii.4 or r05 in ii.4%}
+        <g>{% if ii.6 is not None%}{{ii.6}}{% endif %}</g>{% else %}{% if ii.6 is not None%}{{ii.6}}{% endif %}{% endif %}</td>
+
+
+
+    </tr>
+    {% endfor %}
+
+</div>
+
+<p>
+<form action="upload_d/" method="post">{% csrf_token %}
+    <input type="submit" class="floating-button2" value="отчёт"></form>
+</p>
+
+{% endblock content %}
