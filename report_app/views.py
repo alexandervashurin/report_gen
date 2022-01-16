@@ -27,7 +27,7 @@ def index(request):
 
 def users_add(request):
     if request.method == 'POST':
-        fioform = FioForm(request.POST)
+        fioform = FioForm(request.POST) # добавить формы
 
         ид_пользователя = fioform.data['пользователи']
         date_time = str(datetime.datetime.now().date())
