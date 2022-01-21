@@ -95,4 +95,4 @@ def users():
 
 
 class FioForm(forms.Form):
-    пользователи = forms.ChoiceField(label="пользователи", choices=STAFF)
+    users_dep = forms.ChoiceField(label="пользователи", choices=STAFF)

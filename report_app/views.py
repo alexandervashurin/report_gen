@@ -2,7 +2,6 @@ from django.shortcuts import render
 from report_app.forms import FioForm
 from report_app.models import ReestrUsers
 
-
 import datetime
 from django.http import HttpResponse
 import os
@@ -22,27 +21,30 @@ def index(request):
     date_time = str(datetime.datetime.now().date())
     '''print(diag_device)'''
     d_time = date_time.split(
-        '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+        '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[
+                 0] + ' г.'
 
     return render(request, 'report_app/index.html',
                   {'title': d_time, 'ss': cloud, })
 
 
 def users_add(request):
+    from report_app.report_users.report_user_gen import function_report2
     if request.method == 'POST':
         fioform = FioForm(request.POST)  # добавить формы
 
-        ид_пользователя = fioform.data['пользователи']
+        ид_пользователя = fioform.data['users_dep']
         date_time = str(datetime.datetime.now().date())
         d_time = date_time.split(
-            '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+            '-')[2] + '.' + date_time.split('-')[1] + '.' + \
+                 date_time.split('-')[0] + ' г.'
         выборка = пользователи_все.filter(фио=ид_пользователя)
 
-        from report_app.report_modules.report_users import function_report2
-
         response = HttpResponse(
-            content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-        response['Content-Disposition'] = 'attachment; filename="reports_docx.docx"'
+            content_type='application/vnd.openxmlformats-officedocument'
+                         '.wordprocessingml.document')
+        response[
+            'Content-Disposition'] = 'attachment; filename="reports_docx.docx"'
         данные_выборки = [(i.name_middlename_surname,  # 0
                            i.position_pers,  # 1
                            i.department,  # 2
