@@ -2,7 +2,7 @@
 from openpyxl import load_workbook, Workbook
 import datetime
 from more_itertools import chunked
-from openpyxl.styles import PatternFill, Border, Side, Alignment, Protection, Font, NamedStyle
+
 
 dt = datetime.datetime.now().date()
 
@@ -54,6 +54,7 @@ def method_excel(strr: str):
 
     list_coor_b = [i[1].coordinate for i in list(
         wb.active) if i[1].value is None]  # '' coordinate B
+
     list_merged_cells = ["A" + i[1:] + ":" + "G" + i[1:] for i in list_coor_b]
     for i in list_merged_cells:
         ws.merge_cells(i)

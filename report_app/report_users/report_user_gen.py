@@ -6,12 +6,13 @@ from docxtpl import DocxTemplate
 import datetime
 from report_app.report_users.modules_users.фамилия_имя_отчество import ФИО
 from report_app.report_users.modules_users.должности import ДОЛЖНОСТИ
-from report_app.report_users.modules_users.основной_модуль import ПОДРАЗДЕЛЕНИЯ, ТИПЫ_ПРОЦЕССОРОВ, ТИПЫ_ОБОРУДОВАНИЯ, МАРКА_МОНИТОРА, \
-    ТИП_МОНИТОРА, ТИПЫ_ВИДЕОКАРТ, ТИПЫ_ОС, БУЛЕВО, ИНВ_ОС, ИНВ_ТК_М, ИНВ_ТК_К, ИНВ_ТК_Т, ИНВ_ТК_П, ИНВ_ТК, ИНВ_ТК_Н,\
+from report_app.report_users.modules_users.equipment_staff import ПОДРАЗДЕЛЕНИЯ, ТИПЫ_ПРОЦЕССОРОВ, TYPES_EQUIPMENTS, МАРКА_МОНИТОРА, \
+    ТИП_МОНИТОРА, ТИПЫ_ВИДЕОКАРТ, ТИПЫ_ОС, БУЛЕВО, ИНВ_ОС, ИНВ_ТК_М, ИНВ_ТК_К, ИНВ_ТК_Т, INVENTORY_NUMBER_PRINTERS, ИНВ_ТК, ИНВ_ТК_Н,\
     МАРКА_ТЕЛЕФОНА, ИНВ_ИБП, ИНВ_ВЕБКАМ
 
 date_time = str(datetime.datetime.now().date())
-d_time = date_time.split('-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+d_time = date_time.split(
+    '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
 
 
 def function_report(results):
@@ -42,7 +43,7 @@ def function_report(results):
 
     row_cells = table.add_row().cells
     row_cells[0].text = '1'
-    row_cells[1].text = dict(ТИПЫ_ОБОРУДОВАНИЯ).get(int(results[3]))
+    row_cells[1].text = dict(TYPES_EQUIPMENTS).get(int(results[3]))
     row_cells[2].text = dict(ТИПЫ_ПРОЦЕССОРОВ).get(int(results[4]))
     if results[5] is not None:
         row_cells[3].text = str(results[5])
@@ -62,8 +63,10 @@ def function_report(results):
 
     row_cells = table.add_row().cells
     row_cells[0].text = '2'
-    row_cells[1].text = 'Марка монитора: ' + dict(ТИП_МОНИТОРА).get(int(results[6]))
-    row_cells[2].text = 'Видеокарта: ' + dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
+    row_cells[1].text = 'Марка монитора: ' + \
+        dict(ТИП_МОНИТОРА).get(int(results[6]))
+    row_cells[2].text = 'Видеокарта: ' + \
+        dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
     row_cells[3].text = ''
     row_cells[4].text = ''
     row_cells[5].text = ''
@@ -80,25 +83,25 @@ def function_report2(results):
     inv_OS = dict(ИНВ_ОС).get((results[13]))
     inv_TK = dict(ИНВ_ТК).get((results[21]))
     inv_nout = dict(ИНВ_ТК_Н).get((results[22]))
-    if dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Системный блок':
+    if dict(TYPES_EQUIPMENTS).get((results[3])) == 'Системный блок':
         res = inv_OS
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Тонкий клиент НР Flexible':
+    elif dict(TYPES_EQUIPMENTS).get((results[3])) == 'Тонкий клиент НР Flexible':
         res = inv_TK
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук Dell Latitude 3510 15.6 ':
+    elif dict(TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Latitude 3510 15.6 ':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук Dell Inspiron 5490':
+    elif dict(TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Inspiron 5490':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук HP ProBook 430 G5, 13.3':
+    elif dict(TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук HP ProBook 430 G5, 13.3':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук-трансформер  HP Pavilion x360':
+    elif dict(TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук-трансформер  HP Pavilion x360':
         res = inv_nout
     else:
         res = "нет"
 
-    context = {'фио': str(dict(ФИО).get((results[0]))),
-               'должность': dict(ДОЛЖНОСТИ).get((results[1])),
-               'подразделение': dict(ПОДРАЗДЕЛЕНИЯ).get((results[2])),
-               'устройство': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])),
+    context = {'name_middlename_surname': str(dict(ФИО).get((results[0]))),
+               'position_pers': dict(ДОЛЖНОСТИ).get((results[1])),
+               'department': dict(ПОДРАЗДЕЛЕНИЯ).get((results[2])),
+               'устройство': dict(TYPES_EQUIPMENTS).get((results[3])),
                'типпроцессора': dict(ТИПЫ_ПРОЦЕССОРОВ).get((results[4])),
                'марка_монитора': dict(МАРКА_МОНИТОРА).get((results[6])),
                'видеокарта': dict(ТИПЫ_ВИДЕОКАРТ).get((results[7])),
@@ -106,7 +109,7 @@ def function_report2(results):
                'ОС': dict(ТИПЫ_ОС).get((results[9])),
                'диагональ_монитора': results[10],
                'принтер_локальный': dict(БУЛЕВО).get((results[12])),
-               'инв_принтера': dict(ИНВ_ТК_П).get((results[5])),
+               'инв_принтера': dict(INVENTORY_NUMBER_PRINTERS).get((results[5])),
                'инв_монитора': dict(ИНВ_ТК_М).get((results[11])),
                'ИБП': dict(БУЛЕВО).get((results[14])),
 
@@ -114,23 +117,23 @@ def function_report2(results):
                'инв_колонки': dict(ИНВ_ТК_К).get((results[16])),
 
                'телефон': dict(МАРКА_ТЕЛЕФОНА).get((results[17])),
-               'инв_телефона': dict(ИНВ_ТК_Т).get((results[18])),
-               'номер_телефона': results[19],
+               'inv_num_phone': dict(ИНВ_ТК_Т).get((results[18])),
+               'number_phone': results[19],
 
                'тип_монитора': dict(ТИП_МОНИТОРА).get((results[20])),
 
                'инв_тк': res,
 
-               'пр1': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[23])),
-               'пр2': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[24])),
-               'пр3': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[25])),
-               'пр4': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[26])),
-               'пр5': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[27])),
-               'пр6': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[28])),
-               'пр7': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[29])),
-               'пр8': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[30])),
-               'пр9': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[31])),
-               'пр10': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[32])),
+               'пр1': dict(TYPES_EQUIPMENTS).get((results[23])),
+               'пр2': dict(TYPES_EQUIPMENTS).get((results[24])),
+               'пр3': dict(TYPES_EQUIPMENTS).get((results[25])),
+               'пр4': dict(TYPES_EQUIPMENTS).get((results[26])),
+               'пр5': dict(TYPES_EQUIPMENTS).get((results[27])),
+               'пр6': dict(TYPES_EQUIPMENTS).get((results[28])),
+               'пр7': dict(TYPES_EQUIPMENTS).get((results[29])),
+               'пр8': dict(TYPES_EQUIPMENTS).get((results[30])),
+               'пр9': dict(TYPES_EQUIPMENTS).get((results[31])),
+               'пр10': dict(TYPES_EQUIPMENTS).get((results[32])),
 
 
                'инв_пр1': results[33],
@@ -155,6 +158,3 @@ def function_report2(results):
     doc.save(directory + '/' + 'report.docx')
 
     return doc
-
-
-

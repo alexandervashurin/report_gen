@@ -3,10 +3,10 @@ import os
 from docx.shared import Inches
 from docx import Document
 from docxtpl import DocxTemplate
-from report_app.report_users.modules_users.основной_модуль import DEPO, SYSTEMS, НОМЕР_ВАГОНА_СЕКЦИИ, TYPE_TRAINS
+from report_app.report_users.modules_users.equipment_staff import DEPO, SYSTEMS, НОМЕР_ВАГОНА_СЕКЦИИ, TYPE_TRAINS
 
-#этот код работает не так как надо
-from report_app.report_users.modules_users.основной_модуль import ТИПЫ_ВИДЕОКАРТ, ТИПЫ_ПРОЦЕССОРОВ, ТИПЫ_ОС, БУЛЕВО
+# этот код работает не так как надо
+from report_app.report_users.modules_users.equipment_staff import ТИПЫ_ВИДЕОКАРТ, ТИПЫ_ПРОЦЕССОРОВ, ТИПЫ_ОС, БУЛЕВО
 from report_app.report_users.modules_users.типы_мониторов import ТИП_МОНИТОРА
 
 

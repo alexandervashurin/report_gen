@@ -1,0 +1,26 @@
+{% extends "report_app/base.html" %}
+{% block content %}
+
+
+<form action ="/us_pivot/" method="post">
+    {% csrf_token %}
+
+
+    <h2>Сводный отчёт по пользователям ООО "Название предприятия"</h2>
+
+
+
+
+    <td>{{form2}}</td>
+
+
+</div>
+
+</table>
+<p> <input type="submit"  class="floating-button2" value="отчёт" />
+    <form action="/us_pivot/" method="post">
+
+    </p>
+</body>
+
+{% endblock content %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from report_app.forms import FioForm
+from report_app.models import ReestrUsers
+
 
 import datetime
 from django.http import HttpResponse
@@ -15,45 +15,44 @@ directory = BASE_DIR.joinpath('media')
 
 # Create your views here.
 cloud = "https://e1.ru"
+пользователи_все = ReestrUsers.reestr_man.all()
 
 
 def index(request):
     date_time = str(datetime.datetime.now().date())
     '''print(diag_device)'''
-    d_time = date_time.split('-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+    d_time = date_time.split(
+        '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
 
-    return render(request, 'report_app/index.html', {'title': d_time, 'ss': cloud, })
+    return render(request, 'report_app/index.html',
+                  {'title': d_time, 'ss': cloud, })
 
 
 def users_add(request):
     if request.method == 'POST':
-        fioform = FioForm(request.POST) # добавить формы
+        fioform = FioForm(request.POST)  # добавить формы
 
         ид_пользователя = fioform.data['пользователи']
         date_time = str(datetime.datetime.now().date())
-        d_time = date_time.split('-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+        d_time = date_time.split(
+            '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
         выборка = пользователи_все.filter(фио=ид_пользователя)
 
-        '''context = {
-            'title': d_time,
-            'пользователи': ид_пользователя,
-
-        }
-        return render(request, 'maker_reports/us_pivot.html', context)'''
         from report_app.report_modules.report_users import function_report2
 
-        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+        response = HttpResponse(
+            content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
         response['Content-Disposition'] = 'attachment; filename="reports_docx.docx"'
-        данные_выборки = [(i.фио,  # 0
-                           i.должность,  # 1
-                           i.подразделение,  # 2
-                           i.тип_оборудования,  # 3
+        данные_выборки = [(i.name_middlename_surname,  # 0
+                           i.position_pers,  # 1
+                           i.department,  # 2
+                           i.type_equip,  # 3
                            i.процессор,  # 4
                            i.инв_принтера,  # 5
                            i.марка_монитора,  # 6
                            i.видеокарта,  # 7
-                           i.номер_телефона,  # 8
-                           i.установленная_операционная_система,  # 9
+                           i.number_phone,  # 8
+                           i.type_os,  # 9
                            i.диагональ_монитора,  # 10
                            i.инв_монитора,  # 11
                            i.принтер_локальный,  # 12
@@ -61,9 +60,9 @@ def users_add(request):
                            i.источник_бесперебойного_питания,  # 14
                            i.колонки,  # 15
                            i.инв_колонки,  # 16
-                           i.телефон_модель,  # 17
-                           i.инв_телефона,  # 18
-                           i.номер_телефона,  # 19
+                           i.brand_phone,  # 17
+                           i.inv_num_phone,  # 18
+                           i.number_phone,  # 19
                            i.тип_монитора,  # 20
                            i.инв_тк,  # 21
                            i.инв_ноутбуков,  # 22
@@ -89,7 +88,7 @@ def users_add(request):
                            i.инв_прочего_устройства10,  # 42
                            i.инв_ИБП,  # 43
                            i.инв_вебкамера,  # 44
-                           i.вебкамера,  # 45
+                           i.webcam,  # 45
 
                            ) for i in выборка][0]
         doc = function_report2(данные_выборки)
@@ -98,4 +97,5 @@ def users_add(request):
     else:
         fioform = FioForm()
 
-        return render(request, 'maker_reports/users_form_maker.html', {'form2': fioform, })
+        return render(
+            request, 'report_app/users_form_maker.html', {'form2': fioform, })

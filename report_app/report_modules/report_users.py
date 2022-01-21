@@ -11,7 +11,9 @@ from maker_reports.tk_users.основной_модуль import ПОДРАЗД�
     МАРКА_ТЕЛЕФОНА, ИНВ_ИБП, ИНВ_ВЕБКАМ
 
 date_time = str(datetime.datetime.now().date())
-d_time = date_time.split('-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] + ' г.'
+d_time = date_time.split(
+    '-')[2] + '.' + date_time.split('-')[1] + '.' + date_time.split('-')[0] \
+         + ' г.'
 
 
 def function_report(results):
@@ -62,8 +64,10 @@ def function_report(results):
 
     row_cells = table.add_row().cells
     row_cells[0].text = '2'
-    row_cells[1].text = 'Марка монитора: ' + dict(ТИП_МОНИТОРА).get(int(results[6]))
-    row_cells[2].text = 'Видеокарта: ' + dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
+    row_cells[1].text = 'Марка монитора: ' + \
+        dict(ТИП_МОНИТОРА).get(int(results[6]))
+    row_cells[2].text = 'Видеокарта: ' + \
+        dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
     row_cells[3].text = ''
     row_cells[4].text = ''
     row_cells[5].text = ''
@@ -95,9 +99,9 @@ def function_report2(results):
     else:
         res = "нет"
 
-    context = {'фио': str(dict(ФИО).get((results[0]))),
-               'должность': dict(ДОЛЖНОСТИ).get((results[1])),
-               'подразделение': dict(ПОДРАЗДЕЛЕНИЯ).get((results[2])),
+    context = {'name_middlename_surname': str(dict(ФИО).get((results[0]))),
+               'position_pers': dict(ДОЛЖНОСТИ).get((results[1])),
+               'department': dict(ПОДРАЗДЕЛЕНИЯ).get((results[2])),
                'устройство': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])),
                'типпроцессора': dict(ТИПЫ_ПРОЦЕССОРОВ).get((results[4])),
                'марка_монитора': dict(МАРКА_МОНИТОРА).get((results[6])),
@@ -114,8 +118,8 @@ def function_report2(results):
                'инв_колонки': dict(ИНВ_ТК_К).get((results[16])),
 
                'телефон': dict(МАРКА_ТЕЛЕФОНА).get((results[17])),
-               'инв_телефона': dict(ИНВ_ТК_Т).get((results[18])),
-               'номер_телефона': results[19],
+               'inv_num_phone': dict(ИНВ_ТК_Т).get((results[18])),
+               'number_phone': results[19],
 
                'тип_монитора': dict(ТИП_МОНИТОРА).get((results[20])),
 
@@ -155,6 +159,3 @@ def function_report2(results):
     doc.save(directory + '/' + 'report.docx')
 
     return doc
-
-
-

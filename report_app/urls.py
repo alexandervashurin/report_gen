@@ -12,4 +12,5 @@ site.site_title = 'ИС'
 urlpatterns = [
     path('index/', views.index, name='index'),
     path('', views.index, name='index'),
+    path('users_add/', views.users_add, name='user_add'),
 ]
