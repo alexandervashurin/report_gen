@@ -6,8 +6,24 @@ from openpyxl.styles import PatternFill, Border, Side, Alignment, Protection, Fo
 
 dt = datetime.datetime.now().date()
 
-sl = ['СТПР', 'Причина отстановки электровоза, электропоезда', 'ПЧ ТК', 'ПЧ ВО', 'БЦВ', 'ПСН', 'УЗАРД',
-      'шкаф', 'ПЧТК', 'ПЧВО', 'СТПР1000', 'ПЧ-ТК', 'ПЧ-ВО', 'ПЧЗУ', 'ПЧ ЗУ', 'ПЧ-ЗУ', 'СТПР 1000']
+sl = [
+    'СТПР',
+    'Причина отстановки электровоза, электропоезда',
+    'ПЧ ТК',
+    'ПЧ ВО',
+    'БЦВ',
+    'ПСН',
+    'УЗАРД',
+    'шкаф',
+    'ПЧТК',
+    'ПЧВО',
+    'СТПР1000',
+    'ПЧ-ТК',
+    'ПЧ-ВО',
+    'ПЧЗУ',
+    'ПЧ ЗУ',
+    'ПЧ-ЗУ',
+    'СТПР 1000']
 
 
 def method_excel(strr: str):
@@ -36,12 +52,14 @@ def method_excel(strr: str):
     for i in s:
         ws.append(i)
 
-    list_coor_b = [i[1].coordinate for i in list(wb.active) if i[1].value is None]  # '' coordinate B
+    list_coor_b = [i[1].coordinate for i in list(
+        wb.active) if i[1].value is None]  # '' coordinate B
     list_merged_cells = ["A" + i[1:] + ":" + "G" + i[1:] for i in list_coor_b]
     for i in list_merged_cells:
         ws.merge_cells(i)
 
-    file = '/' + str(dt).split('-')[0] + '/' + str(dt).split('-')[1] + '/' + str(dt) + '.xlsx'
+    file = '/' + str(dt).split('-')[0] + '/' + \
+        str(dt).split('-')[1] + '/' + str(dt) + '.xlsx'
     wb.save(file)
 
     return sor
