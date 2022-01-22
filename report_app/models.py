@@ -79,6 +79,19 @@ class ReestrUsers(models.Model):
                                   blank=False,
                                   default='1',
                                   choices=eq.TYPES_EQUIPMENTS)  # 3
+
+    # тип оборудования
+    brand_monitor = models.CharField("марка монитора", max_length=2,
+                                  blank=False,
+                                  default='1',
+                                  choices=eq.BRAND_MONITORS)  # 3
+
+    # тип оборудования
+    type_monitor = models.CharField("тип монитора", max_length=2,
+                                  blank=False,
+                                  default='1',
+                                  choices=eq.TYPES_MONITORS)  # 3
+
     # инв. номер ноутбука
     inv_num_notebook = models.CharField(max_length=2, blank=False, default='1',
                                         choices=eq.INVENTORY_NUMBER_NOTEBOOK)  # 22

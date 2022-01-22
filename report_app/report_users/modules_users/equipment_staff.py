@@ -6,6 +6,19 @@ TYPES_PCS = (
 
 )
 
+BRAND_MONITORS = (
+    ('1', "DELL"),
+    ('2', "Samsung"),
+    ('3', "ViewSonic"),
+    ('4', "LG")
+)
+
+TYPES_MONITORS = (
+    ('1', "LCD"),
+    ('2', "TFT")
+)
+
+
 TYPES_EQUIPMENTS = (
     ('0', "нет"),
     ('1', "Тонкий клиент"),

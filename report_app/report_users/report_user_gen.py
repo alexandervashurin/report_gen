@@ -4,11 +4,10 @@ from docx.shared import Inches
 from docx import Document
 from docxtpl import DocxTemplate
 import datetime
-from maker_reports.tk_users.фамилия_имя_отчество import ФИО
-from maker_reports.tk_users.должности import ДОЛЖНОСТИ
-from maker_reports.tk_users.основной_модуль import ПОДРАЗДЕЛЕНИЯ, ТИПЫ_ПРОЦЕССОРОВ, ТИПЫ_ОБОРУДОВАНИЯ, МАРКА_МОНИТОРА, \
-    ТИП_МОНИТОРА, ТИПЫ_ВИДЕОКАРТ, ТИПЫ_ОС, БУЛЕВО, ИНВ_ОС, ИНВ_ТК_М, ИНВ_ТК_К, ИНВ_ТК_Т, ИНВ_ТК_П, ИНВ_ТК, ИНВ_ТК_Н,\
-    МАРКА_ТЕЛЕФОНА, ИНВ_ИБП, ИНВ_ВЕБКАМ
+from report_app.report_users.modules_users.employees_and_departments import STAFF
+from report_app.report_users.modules_users.employees_and_departments import DEPARTMENTS
+from report_app.report_users.modules_users.employees_and_departments import POSITIONS
+import report_app.report_users.modules_users.equipment_staff as eq
 
 date_time = str(datetime.datetime.now().date())
 d_time = date_time.split(
@@ -17,7 +16,6 @@ d_time = date_time.split(
 
 
 def function_report(results):
-    directory = '/home/alex/report_project/report_project/media/отчёты'
     document = Document()
     run = document.add_paragraph().add_run()
     font = run.font
@@ -25,13 +23,13 @@ def function_report(results):
     table = document.add_table(rows=3, cols=2)
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = 'Пользователь'
-    hdr_cells[1].text = str(dict(ФИО).get(int(results[0])))
+    hdr_cells[1].text = str(dict(STAFF).get(int(results[0])))
     hdr_cells = table.rows[1].cells
     hdr_cells[0].text = 'Должность'
-    hdr_cells[1].text = dict(ДОЛЖНОСТИ).get(int(results[1]))
+    hdr_cells[1].text = dict(POSITIONS).get(int(results[1]))
     hdr_cells = table.rows[2].cells
     hdr_cells[0].text = 'Подразделение'
-    hdr_cells[1].text = dict(ПОДРАЗДЕЛЕНИЯ).get(int(results[2]))
+    hdr_cells[1].text = dict(DEPARTMENTS).get(int(results[2]))
 
     table = document.add_table(rows=1, cols=6)
     hdr_cells = table.rows[0].cells
@@ -44,8 +42,8 @@ def function_report(results):
 
     row_cells = table.add_row().cells
     row_cells[0].text = '1'
-    row_cells[1].text = dict(ТИПЫ_ОБОРУДОВАНИЯ).get(int(results[3]))
-    row_cells[2].text = dict(ТИПЫ_ПРОЦЕССОРОВ).get(int(results[4]))
+    row_cells[1].text = dict(eq.TYPES_EQUIPMENTS).get(int(results[3]))
+    row_cells[2].text = dict(eq.TYPES_PROCESSORS).get(int(results[4]))
     if results[5] is not None:
         row_cells[3].text = str(results[5])
     else:
@@ -65,7 +63,7 @@ def function_report(results):
     row_cells = table.add_row().cells
     row_cells[0].text = '2'
     row_cells[1].text = 'Марка монитора: ' + \
-        dict(ТИП_МОНИТОРА).get(int(results[6]))
+        dict(eq.TYPES_EQUIPMENTS).get(int(results[6]))
     row_cells[2].text = 'Видеокарта: ' + \
         dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
     row_cells[3].text = ''
