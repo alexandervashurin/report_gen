@@ -8,6 +8,7 @@ from report_app.report_users.modules_users.employees_and_departments import STAF
 from report_app.report_users.modules_users.employees_and_departments import DEPARTMENTS
 from report_app.report_users.modules_users.employees_and_departments import POSITIONS
 import report_app.report_users.modules_users.equipment_staff as eq
+from report_app.views import directory
 
 date_time = str(datetime.datetime.now().date())
 d_time = date_time.split(
@@ -65,95 +66,87 @@ def function_report(results):
     row_cells[1].text = 'Марка монитора: ' + \
         dict(eq.TYPES_EQUIPMENTS).get(int(results[6]))
     row_cells[2].text = 'Видеокарта: ' + \
-        dict(ТИПЫ_ВИДЕОКАРТ).get(int(results[7]))
+        dict(eq.TYPE_VIDEOS).get(int(results[7]))
     row_cells[3].text = ''
     row_cells[4].text = ''
     row_cells[5].text = ''
 
     document.add_page_break()
-    document.save(directory + '/' + 'demo.docx')
+    document.save(str(directory) + "/" + "отчёты" + "/" + "demo.docx")
 
     return document
 
 
 def function_report2(results):
-    directory = '/home/alex/report_project/report_project/media/отчёты'
-    doc = DocxTemplate(directory + '/' + 'demo.docx')
-    inv_OS = dict(ИНВ_ОС).get((results[13]))
-    inv_TK = dict(ИНВ_ТК).get((results[21]))
-    inv_nout = dict(ИНВ_ТК_Н).get((results[22]))
-    if dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Системный блок':
+    doc = DocxTemplate(str(directory) + "/" + "отчёты" + "/" + "demo.docx")
+    inv_OS = dict(eq.INVENTORY_NUMBER_MAIN_EQUIPMENTS).get((results[13]))
+    inv_TK = dict(eq.INVENTORY_NUMBER_THIN_CLIENT).get((results[21]))
+    inv_nout = dict(eq.INVENTORY_NUMBER_NOTEBOOK).get((results[22]))
+    if dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Системный блок':
         res = inv_OS
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Тонкий клиент НР Flexible':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Тонкий клиент НР Flexible':
         res = inv_TK
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук Dell Latitude 3510 15.6 ':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Latitude 3510 15.6 ':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук Dell Inspiron 5490':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Inspiron 5490':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук HP ProBook 430 G5, 13.3':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук HP ProBook 430 G5, 13.3':
         res = inv_nout
-    elif dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])) == 'Ноутбук-трансформер  HP Pavilion x360':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук-трансформер  HP Pavilion x360':
         res = inv_nout
     else:
         res = "нет"
 
-    context = {'name_middlename_surname': str(dict(ФИО).get((results[0]))),
-               'position_pers': dict(ДОЛЖНОСТИ).get((results[1])),
-               'department': dict(ПОДРАЗДЕЛЕНИЯ).get((results[2])),
-               'устройство': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[3])),
-               'типпроцессора': dict(ТИПЫ_ПРОЦЕССОРОВ).get((results[4])),
-               'марка_монитора': dict(МАРКА_МОНИТОРА).get((results[6])),
-               'видеокарта': dict(ТИПЫ_ВИДЕОКАРТ).get((results[7])),
+    context = {'фио': str(dict(STAFF).get((results[0]))),
+               'должность': dict(POSITIONS).get((results[1])),
+               'подразделение': dict(DEPARTMENTS).get((results[2])),
+               'устройство': dict(eq.TYPES_EQUIPMENTS).get((results[3])),
+               'типпроцессора': dict(eq.TYPES_PROCESSORS).get((results[4])),
+               'инв_принтера': dict(eq.INVENTORY_NUMBER_PRINTERS).get(
+                   (results[5])),
+               'марка_монитора': dict(eq.BRAND_MONITORS).get((results[6])),
+               'видеокарта': dict(eq.TYPE_VIDEOS).get((results[7])),
                'номер телефона': results[8],
-               'ОС': dict(ТИПЫ_ОС).get((results[9])),
+               'ОС': dict(eq.TYPE_OSES).get((results[9])),
                'диагональ_монитора': results[10],
-               'принтер_локальный': dict(БУЛЕВО).get((results[12])),
-               'инв_принтера': dict(ИНВ_ТК_П).get((results[5])),
-               'инв_монитора': dict(ИНВ_ТК_М).get((results[11])),
-               'ИБП': dict(БУЛЕВО).get((results[14])),
+               'инв_монитора': dict(eq.INVENTORY_NUMBER_MONITORS).get(
+                   (results[11])),
+               'принтер_локальный': dict(eq.AVAILABILITY).get((results[12])),
 
-               'колонки': dict(БУЛЕВО).get((results[15])),
-               'инв_колонки': dict(ИНВ_ТК_К).get((results[16])),
 
-               'телефон': dict(МАРКА_ТЕЛЕФОНА).get((results[17])),
-               'inv_num_phone': dict(ИНВ_ТК_Т).get((results[18])),
+               'ИБП': dict(eq.AVAILABILITY).get((results[14])),
+
+               'колонки': dict(eq.AVAILABILITY).get((results[15])),
+               'инв_колонки': dict(eq.INVENTORY_NUMBER_SOUND_SPEAKERS).get((results[16])),
+
+               'телефон': dict(eq.NAME_PHONES).get((results[17])),
+               'inv_num_phone': dict(eq.INVENTORY_NUMBER_PHONES).get((results[18])),
                'number_phone': results[19],
 
-               'тип_монитора': dict(ТИП_МОНИТОРА).get((results[20])),
+               'тип_монитора': dict(eq.TYPES_MONITORS).get((results[20])),
 
-               'инв_тк': res,
+               'инв_тк':  dict(eq.INVENTORY_NUMBER_THIN_CLIENT).get((results[21])),
 
-               'пр1': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[23])),
-               'пр2': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[24])),
-               'пр3': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[25])),
-               'пр4': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[26])),
-               'пр5': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[27])),
-               'пр6': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[28])),
-               'пр7': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[29])),
-               'пр8': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[30])),
-               'пр9': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[31])),
-               'пр10': dict(ТИПЫ_ОБОРУДОВАНИЯ).get((results[32])),
+               'пр1': dict(eq.TYPES_EQUIPMENTS).get((results[23])),
+               'пр2': dict(eq.TYPES_EQUIPMENTS).get((results[24])),
 
 
-               'инв_пр1': results[33],
-               'инв_пр2': results[34],
-               'инв_пр3': results[35],
-               'инв_пр4': results[36],
-               'инв_пр5': results[37],
-               'инв_пр6': results[38],
-               'инв_пр7': results[39],
-               'инв_пр8': results[40],
-               'инв_пр9': results[41],
-               'инв_пр10': results[42],
 
-               'инв_ИБП': dict(ИНВ_ИБП).get((results[43])),
 
-               'инв_вебкам': dict(ИНВ_ВЕБКАМ).get((results[44])),
-               'вебкам': dict(БУЛЕВО).get((results[45])),
+               'инв_пр1': results[25],
+               'инв_пр2': results[26],
+
+
+
+               'инв_ИБП': dict(eq.UPS).get((results[27])),
+
+               'инв_вебкам': dict(eq.INVENTORY_NUMBER_WEBCAM).get((results[
+                   28])),
+               'вебкам': dict(eq.AVAILABILITY).get((results[29])),
 
                'дата': d_time
                }
     doc.render(context)
-    doc.save(directory + '/' + 'report.docx')
+    doc.save(str(directory) + "/" + "отчёты" + "/" + "report.docx")
 
     return doc

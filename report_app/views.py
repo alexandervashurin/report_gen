@@ -14,7 +14,7 @@ directory = BASE_DIR.joinpath('media')
 
 # Create your views here.
 cloud = "https://e1.ru"
-пользователи_все = ReestrUsers.reestr_man.all()
+users_dep_all = ReestrUsers.reestr_man.all()
 
 
 def index(request):
@@ -33,67 +33,51 @@ def users_add(request):
     if request.method == 'POST':
         fioform = FioForm(request.POST)  # добавить формы
 
-        ид_пользователя = fioform.data['users_dep']
+        id_user_dep = fioform.data['users_dep']
         date_time = str(datetime.datetime.now().date())
         d_time = date_time.split(
             '-')[2] + '.' + date_time.split('-')[1] + '.' + \
                  date_time.split('-')[0] + ' г.'
-        выборка = пользователи_все.filter(фио=ид_пользователя)
+        choices = users_dep_all.filter(name_m_surname=id_user_dep)
 
         response = HttpResponse(
             content_type='application/vnd.openxmlformats-officedocument'
                          '.wordprocessingml.document')
         response[
             'Content-Disposition'] = 'attachment; filename="reports_docx.docx"'
-        данные_выборки = [(i.name_middlename_surname,  # 0
-                           i.position_pers,  # 1
-                           i.department,  # 2
-                           i.type_equip,  # 3
-                           i.процессор,  # 4
-                           i.инв_принтера,  # 5
-                           i.марка_монитора,  # 6
-                           i.видеокарта,  # 7
-                           i.number_phone,  # 8
-                           i.type_os,  # 9
-                           i.диагональ_монитора,  # 10
-                           i.инв_монитора,  # 11
-                           i.принтер_локальный,  # 12
-                           i.инв_основного_оборудования,  # 13
-                           i.источник_бесперебойного_питания,  # 14
-                           i.колонки,  # 15
-                           i.инв_колонки,  # 16
-                           i.brand_phone,  # 17
-                           i.inv_num_phone,  # 18
-                           i.number_phone,  # 19
-                           i.тип_монитора,  # 20
-                           i.инв_тк,  # 21
-                           i.инв_ноутбуков,  # 22
-                           i.прочие_устройства,  # 23
-                           i.прочие_устройства2,  # 24
-                           i.прочие_устройства3,  # 25
-                           i.прочие_устройства4,  # 26
-                           i.прочие_устройства5,  # 27
-                           i.прочие_устройства6,  # 28
-                           i.прочие_устройства7,  # 29
-                           i.прочие_устройства8,  # 30
-                           i.прочие_устройства9,  # 31
-                           i.прочие_устройства10,  # 32
-                           i.инв_прочего_устройства,  # 33
-                           i.инв_прочего_устройства2,  # 34
-                           i.инв_прочего_устройства3,  # 35
-                           i.инв_прочего_устройства4,  # 36
-                           i.инв_прочего_устройства5,  # 37
-                           i.инв_прочего_устройства6,  # 38
-                           i.инв_прочего_устройства7,  # 39
-                           i.инв_прочего_устройства8,  # 40
-                           i.инв_прочего_устройства9,  # 41
-                           i.инв_прочего_устройства10,  # 42
-                           i.инв_ИБП,  # 43
-                           i.инв_вебкамера,  # 44
-                           i.webcam,  # 45
+        choices_data = [(i.name_m_surname,  # 0
+                         i.position_pers,  # 1
+                         i.department,  # 2
+                         i.type_equip,  # 3
+                         i.type_processor,  # 4
+                         i.inv_num_printer,  # 5
+                         i.brand_monitor,  # 6
+                         i.type_video,  # 7
+                         i.number_phone,  # 8
+                         i.type_os,  # 9
+                         i.diagonal_monitor,  # 10
+                         i.inv_num_monitor,  # 11
+                         i.local_printer,  # 12
+                         i.inv_num_main_equip,  # 13
+                         i.ups,  # 14
+                         i.sound_devices,  # 15
+                         i.inv_num_sound_speakers,  # 16
+                         i.brand_phone,  # 17
+                         i.inv_num_phone,  # 18
+                         i.number_phone,  # 19
+                         i.type_monitor,  # 20
+                         i.inv_num_thin_client,  # 21
+                         i.inv_num_notebook,  # 22
+                         i.other_devices,  # 23
+                         i.other_devices2,  # 24
+                         i.inv_num_other_devices,  # 25
+                         i.inv_num_other_devices2,  # 26
+                         i.inv_num_ups,  # 27
+                         i.inv_num_webcam,  # 28
+                         i.webcam,  # 29
 
-                           ) for i in выборка][0]
-        doc = function_report2(данные_выборки)
+                         ) for i in choices][0]
+        doc = function_report2(choices_data)
         doc.save(response)
         return response
     else:

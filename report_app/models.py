@@ -124,7 +124,7 @@ class ReestrUsers(models.Model):
                                      blank=False, default='1',
                                      choices=eq.AVAILABILITY)  # 15
     # инв. номер звуковых колонок
-    inv_num_sound_speakers = models.CharField("инв. номерколонок",
+    inv_num_sound_speakers = models.CharField("инв. номер колонок",
                                               max_length=2, blank=False,
                                               default='0',
                                               choices=eq.INVENTORY_NUMBER_SOUND_SPEAKERS)  # 16
