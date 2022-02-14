@@ -3,9 +3,8 @@
 необходимо добавлю )
 использовал: django_crispy_form, docxtpl
 
-## Для создания БД
 
-first_sql.sql
+
 
 
 

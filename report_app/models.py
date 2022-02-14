@@ -226,3 +226,13 @@ class ReestrUsers(models.Model):
         ordering = ['name_m_surname']
         verbose_name = "пользователи Информационной системы"
         verbose_name_plural = "пользователи_ИС"
+
+
+# Класс зарплатная ведомость
+
+class SalaryEmployers(models.Model):
+    employee = models.ForeignKey(ReestrUsers, on_delete=models.CASCADE)
+    salary_position = models.CharField("Ставка по окладу", max_length=7,
+                                       blank=False, default='--',
+                                       choices=emp.POSITIONS)
+    procents = models.IntegerField("процентная надбавка", blank=True, null=True)
