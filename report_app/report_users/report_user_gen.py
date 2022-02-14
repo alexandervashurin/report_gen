@@ -84,15 +84,20 @@ def function_report2(results):
     inv_nout = dict(eq.INVENTORY_NUMBER_NOTEBOOK).get((results[22]))
     if dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Системный блок':
         res = inv_OS
-    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Тонкий клиент НР Flexible':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Тонкий клиент НР ' \
+                                                        'Flexible':
         res = inv_TK
-    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Latitude 3510 15.6 ':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell ' \
+                                                        'Latitude 3510 15.6 ':
         res = inv_nout
-    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell Inspiron 5490':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук Dell ' \
+                                                        'Inspiron 5490':
         res = inv_nout
-    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук HP ProBook 430 G5, 13.3':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук HP ProBook ' \
+                                                        '430 G5, 13.3':
         res = inv_nout
-    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук-трансформер  HP Pavilion x360':
+    elif dict(eq.TYPES_EQUIPMENTS).get((results[3])) == 'Ноутбук-трансформер ' \
+                                                        ' HP Pavilion x360':
         res = inv_nout
     else:
         res = "нет"
