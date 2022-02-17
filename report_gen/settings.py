@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'report_gen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'reportdatabase',
+        'NAME': 'report_psi',
         'USER': 'reportuser',
         "PASSWORD": 'bailando123',
     }

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from report_app.forms import FioForm
-from report_app.models import ReestrUsers
+
 
 import datetime
 from django.http import HttpResponse
@@ -14,7 +14,7 @@ directory = BASE_DIR.joinpath('media')
 
 # Create your views here.
 cloud = "https://e1.ru"
-users_dep_all = ReestrUsers.reestr_man.all()
+
 
 
 def index(request):
