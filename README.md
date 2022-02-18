@@ -5,9 +5,10 @@
 
 # Сама БД
 файл: test.sql
-1. Установить БД PostgreSQL.
-Для windows: https://www.postgresql.org/download/windows/
-Для остальных операционных систем можно найти здесь: https://www.postgresql.org/download/
+
+Установить БД PostgreSQL.
+1. Для windows: https://www.postgresql.org/download/windows/
+2. Для остальных операционных систем можно найти здесь: https://www.postgresql.org/download/
 
 
 
