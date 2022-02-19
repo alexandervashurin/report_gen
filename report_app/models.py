@@ -25,6 +25,9 @@ class Employee(models.Model):
                                choices=POSITIONS)
     data_of_emp = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.emp_name
+
     class Meta:
         db_table = 'Сотрудник'
 
@@ -39,6 +42,9 @@ class OfficeEquipment(models.Model):
                                 null=True)
     data_install = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.off_id
+
     class Meta:
         db_table = 'офисная техника'
 
@@ -52,6 +58,9 @@ class InventoryNumbers(models.Model):
     inv_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
                                 null=True)
     data_install = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.inv_id
 
     class Meta:
         db_table = 'инвентарные'
