@@ -54,4 +54,4 @@ class InventoryNumbers(models.Model):
     data_install = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        db_table = 'инвентарные номера остальной техники'
+        db_table = 'инвентарные'
