@@ -1,35 +1,54 @@
-
+from report_app.report_users.modules_users.employees_and_departments import \
+    STAFF
+from report_app.report_users.modules_users.employees_and_departments import \
+    DEPARTMENTS
+from report_app.report_users.modules_users.employees_and_departments import \
+    POSITIONS
+from report_app.report_users.modules_users.equipment_staff import \
+    TYPES_EQUIPMENTS
+from report_app.report_users.modules_users.equipment_staff import \
+    INVENTORY_NUMBER_MAIN_EQUIPMENTS
+from report_app.report_users.modules_users.equipment_staff import \
+    INVENTORY_NUMBER_PHONES
+from report_app.report_users.modules_users.equipment_staff import \
+    INVENTORY_NUMBER_SOUND_SPEAKERS
 from django.db import models
 
 
-class Agregat(models.Model):
-    agregat_id = models.IntegerField(primary_key=True)
-    name_agr = models.CharField(blank=True, null=True)
-    serial_num = models.CharField(blank=True, null=True)
-    current_quality = models.CharField(blank=True, null=True)  # This field type is a guess.
-    data_production = models.DateTimeField(blank=True, null=True)
+class Employee(models.Model):
+    emp_id = models.IntegerField(primary_key=True)
+    emp_name = models.CharField(blank=True, null=True, choices=STAFF)
+    emp_dep = models.CharField(blank=True, null=True, choices=DEPARTMENTS)
+    emp_pos = models.CharField(blank=True, null=True, choices=POSITIONS)
+    data_of_emp = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        db_table = 'Изделие'
+        db_table = 'Сотрудник'
 
 
-class ProductsA(models.Model):
-    producta_no = models.IntegerField(primary_key=True)
-    namea = models.CharField(blank=True, null=True)
-    batch_numa = models.IntegerField(blank=True, null=True)
-    agr = models.ForeignKey(Agregat, models.DO_NOTHING, blank=True, null=True)
-    data_prod_a = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        db_table = 'компонент_1'
-
-
-class ProductsB(models.Model):
-    productb_no = models.IntegerField(primary_key=True)
-    nameb = models.CharField(blank=True, null=True)
-    batch_numb = models.IntegerField(blank=True, null=True)
-    agr = models.ForeignKey(Agregat, models.DO_NOTHING, blank=True, null=True)
-    data_prod_b = models.DateTimeField(blank=True, null=True)
+class OfficeEquipment(models.Model):
+    off_id = models.IntegerField(primary_key=True)
+    off_type = models.CharField(blank=True, null=True,
+                                choices=TYPES_EQUIPMENTS)
+    off_type_num = models.IntegerField(blank=True, null=True,
+                                       choices=INVENTORY_NUMBER_MAIN_EQUIPMENTS)
+    off_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
+                                null=True)
+    data_install = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        db_table = 'компонент_2'
+        db_table = 'офисная техника'
+
+
+class InventoryNumbers(models.Model):
+    inv_id = models.IntegerField(primary_key=True)
+    inv_phones = models.CharField(blank=True, null=True,
+                                  choices=INVENTORY_NUMBER_PHONES)
+    inv_speakers = models.CharField(blank=True, null=True,
+                                    choices=INVENTORY_NUMBER_SOUND_SPEAKERS)
+    inv_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
+                                null=True)
+    data_install = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'инвентарные номера остальной техники'

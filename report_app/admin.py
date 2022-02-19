@@ -1,23 +1,24 @@
 from django.contrib import admin
-from report_app.models import Agregat, ProductsA, ProductsB
+from report_app.models import Employee, InventoryNumbers, OfficeEquipment
 
 
-@admin.register(ProductsA)
-class ProductAdmin(admin.ModelAdmin):
-    search_fields = ('namea', 'batch_numa')
-    list_display = ('producta_no', 'namea', 'batch_numa', 'data_prod_a')
-    list_filter = ('data_prod_a', 'namea')
+@admin.register(Employee)
+class EmpoyeeAdmin(admin.ModelAdmin):
+    search_fields = ('emp_name', 'emp_dep', 'emp_pos')
+    list_display = ('emp_name', 'emp_dep', 'emp_pos', 'data_of_emp')
+    list_filter = ('emp_name', 'emp_dep', 'emp_pos')
 
 
-@admin.register(ProductsB)
-class ProductBadmin(admin.ModelAdmin):
-    search_fields = ('nameb', 'batch_numb')
-    list_display = ('productb_no', 'nameb', 'batch_numb', 'data_prod_b')
-    list_filter = ('data_prod_b', 'nameb')
+@admin.register(InventoryNumbers)
+class InventoryNumbersAdmin(admin.ModelAdmin):
+    search_fields = ('off_type', 'off_emp')
+    list_display = ('off_type', 'off_type_num', 'off_emp', 'data_install')
+    list_filter = ('off_type', 'off_type_num', 'off_emp')
 
 
-@admin.register(Agregat)
-class AgregatAdmin(admin.ModelAdmin):
-    search_fields = ('name_agr', 'data_production')
-    list_display = ('serial_num', 'current_quality', 'data_production', 'name_agr')
-    list_filter = ('serial_num', 'data_production')
+@admin.register(OfficeEquipment)
+class OfficeEquipmentAdmin(admin.ModelAdmin):
+    search_fields = ('data_install', 'inv_emp')
+    list_display = ('inv_phones', 'inv_speakers', 'inv_inv_emp',
+                    'data_install')
+    list_filter = ('inv_phones', 'inv_speakers', 'inv_inv_emp')

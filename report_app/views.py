@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from report_app.forms import FioForm
 
-
 import datetime
 from django.http import HttpResponse
 import os
@@ -14,7 +13,6 @@ directory = BASE_DIR.joinpath('media')
 
 # Create your views here.
 cloud = "https://e1.ru"
-
 
 
 def index(request):
