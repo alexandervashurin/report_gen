@@ -17,7 +17,7 @@ from django.db import models
 
 class Employee(models.Model):
     emp_id = models.IntegerField(primary_key=True)
-    emp_name = models.CharField(blank=True, max_length=100,  null=True,
+    emp_name = models.CharField(blank=True, max_length=100, null=True,
                                 choices=STAFF)
     emp_dep = models.CharField(blank=True, max_length=100, null=True,
                                choices=DEPARTMENTS)
@@ -34,7 +34,7 @@ class OfficeEquipment(models.Model):
     off_type = models.CharField(blank=True, max_length=100, null=True,
                                 choices=TYPES_EQUIPMENTS)
     off_type_num = models.CharField(blank=True, max_length=100, null=True,
-                                       choices=INVENTORY_NUMBER_MAIN_EQUIPMENTS)
+                                    choices=INVENTORY_NUMBER_MAIN_EQUIPMENTS)
     off_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
                                 null=True)
     data_install = models.DateTimeField(blank=True, null=True)
