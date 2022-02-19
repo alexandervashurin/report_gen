@@ -17,8 +17,8 @@ from django.db import models
 
 class Employee(models.Model):
     emp_id = models.IntegerField(primary_key=True)
-    emp_name = models.CharField(blank=True, max_length=100,  null=True, \
-                                                              choices=STAFF)
+    emp_name = models.CharField(blank=True, max_length=100,  null=True,
+                                choices=STAFF)
     emp_dep = models.CharField(blank=True, max_length=100, null=True,
                                choices=DEPARTMENTS)
     emp_pos = models.CharField(blank=True, max_length=100, null=True,

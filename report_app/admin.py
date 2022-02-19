@@ -9,16 +9,16 @@ class EmpoyeeAdmin(admin.ModelAdmin):
     list_filter = ('emp_name', 'emp_dep', 'emp_pos')
 
 
-@admin.register(InventoryNumbers)
-class InventoryNumbersAdmin(admin.ModelAdmin):
+@admin.register(OfficeEquipment)
+class OfficeEquipmentAdmin(admin.ModelAdmin):
     search_fields = ('off_type', 'off_emp')
     list_display = ('off_type', 'off_type_num', 'off_emp', 'data_install')
     list_filter = ('off_type', 'off_type_num', 'off_emp')
 
 
-@admin.register(OfficeEquipment)
-class OfficeEquipmentAdmin(admin.ModelAdmin):
+@admin.register(InventoryNumbers)
+class InventoryNumbersAdmin(admin.ModelAdmin):
     search_fields = ('data_install', 'inv_emp')
-    list_display = ('inv_phones', 'inv_speakers', 'inv_inv_emp',
+    list_display = ('inv_phones', 'inv_speakers', 'inv_emp',
                     'data_install')
-    list_filter = ('inv_phones', 'inv_speakers', 'inv_inv_emp')
+    list_filter = ('inv_phones', 'inv_speakers', 'inv_emp')
