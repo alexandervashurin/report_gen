@@ -17,9 +17,12 @@ from django.db import models
 
 class Employee(models.Model):
     emp_id = models.IntegerField(primary_key=True)
-    emp_name = models.CharField(blank=True, null=True, choices=STAFF)
-    emp_dep = models.CharField(blank=True, null=True, choices=DEPARTMENTS)
-    emp_pos = models.CharField(blank=True, null=True, choices=POSITIONS)
+    emp_name = models.CharField(blank=True, max_length=100,  null=True, \
+                                                              choices=STAFF)
+    emp_dep = models.CharField(blank=True, max_length=100, null=True,
+                               choices=DEPARTMENTS)
+    emp_pos = models.CharField(blank=True, max_length=100, null=True,
+                               choices=POSITIONS)
     data_of_emp = models.DateTimeField(blank=True, null=True)
 
     class Meta:
@@ -28,9 +31,9 @@ class Employee(models.Model):
 
 class OfficeEquipment(models.Model):
     off_id = models.IntegerField(primary_key=True)
-    off_type = models.CharField(blank=True, null=True,
+    off_type = models.CharField(blank=True, max_length=100, null=True,
                                 choices=TYPES_EQUIPMENTS)
-    off_type_num = models.IntegerField(blank=True, null=True,
+    off_type_num = models.CharField(blank=True, max_length=100, null=True,
                                        choices=INVENTORY_NUMBER_MAIN_EQUIPMENTS)
     off_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
                                 null=True)
@@ -42,9 +45,9 @@ class OfficeEquipment(models.Model):
 
 class InventoryNumbers(models.Model):
     inv_id = models.IntegerField(primary_key=True)
-    inv_phones = models.CharField(blank=True, null=True,
+    inv_phones = models.CharField(blank=True, max_length=100, null=True,
                                   choices=INVENTORY_NUMBER_PHONES)
-    inv_speakers = models.CharField(blank=True, null=True,
+    inv_speakers = models.CharField(blank=True, max_length=100, null=True,
                                     choices=INVENTORY_NUMBER_SOUND_SPEAKERS)
     inv_emp = models.ForeignKey(Employee, models.DO_NOTHING, blank=True,
                                 null=True)
