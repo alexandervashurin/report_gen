@@ -6,22 +6,16 @@
 # Сама БД
 файл: report_gen.sql
 
-Установить БД PostgreSQL.
-1. Для windows: https://www.postgresql.org/download/windows/
-2. Для остальных операционных систем можно найти здесь: https://www.postgresql.org/download/
+2. Установить БД PostgreSQL.
+устанавливаем docker, docker-compose. Переходим в папку /docker_images_db_pgadmin,
+запускаем в терминале: docker-compose up -d
+В дальнейшем работаем с docker-образами.
 
-Необходимо создать каркас БД с помощью этих команд, которые необходимо 
-выполнить в консоли <b>psql 
+Необходимо создать каркас БД с помощью этих команд, которые необходимо  
 
-#### CREATE DATABASE report_gendb;
-#### CREATE USER reportuser WITH PASSWORD 'bailando123';
+запускаем эти скрипты:
 #### ALTER ROLE reportuser SET client_encoding TO 'utf8';
 #### ALTER ROLE reportuser SET default_transaction_isolation TO 'read committed';
 #### ALTER ROLE reportuser SET timezone TO 'UTC';
 #### GRANT ALL PRIVILEGES ON DATABASE reportdatabase TO reportuser;
-
-
-
-
-
 
